@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from '@/components/ui/badge';
 import { Icons } from './icons';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { Skeleton } from './ui/skeleton';
 
 interface CommentCardProps {
   comment: AnalyzedComment;
@@ -31,9 +32,10 @@ const sentimentStyles = {
 export default function CommentCard({ comment }: CommentCardProps) {
   const styles = sentimentStyles[comment.sentiment];
   const SentimentIcon = styles.icon;
+  const isOptimistic = comment.isOptimistic;
 
   return (
-    <Card className="transition-shadow duration-300 hover:shadow-lg">
+    <Card className={`transition-shadow duration-300 hover:shadow-lg ${isOptimistic ? 'opacity-60 animate-pulse' : ''}`}>
       <CardHeader>
         <div className="flex items-start justify-between">
             <div>
@@ -54,7 +56,14 @@ export default function CommentCard({ comment }: CommentCardProps) {
                 <Icons.Summary className="h-5 w-5 flex-shrink-0 text-primary mt-1" />
                 <div>
                     <h4 className="font-semibold text-sm">AI Summary</h4>
-                    <p className="text-sm text-muted-foreground">{comment.summary}</p>
+                    {isOptimistic ? (
+                        <div className="space-y-2 mt-1">
+                            <Skeleton className="h-4 w-[250px]" />
+                            <Skeleton className="h-4 w-[200px]" />
+                        </div>
+                    ) : (
+                        <p className="text-sm text-muted-foreground">{comment.summary}</p>
+                    )}
                 </div>
             </div>
 
@@ -77,11 +86,15 @@ export default function CommentCard({ comment }: CommentCardProps) {
       <CardFooter>
         <div className="flex w-full flex-wrap items-center gap-2">
             <span className="text-sm font-medium">Keywords:</span>
-            {comment.keywords.map((keyword) => (
-                <Badge key={keyword} variant="secondary" className="font-normal">
-                {keyword}
-                </Badge>
-            ))}
+            {isOptimistic ? (
+                <Skeleton className="h-5 w-24" />
+            ) : (
+                comment.keywords.map((keyword) => (
+                    <Badge key={keyword} variant="secondary" className="font-normal">
+                    {keyword}
+                    </Badge>
+                ))
+            )}
         </div>
       </CardFooter>
     </Card>

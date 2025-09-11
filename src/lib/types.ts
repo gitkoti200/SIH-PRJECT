@@ -15,4 +15,6 @@ export interface StakeholderComment {
   provision: string;
 }
 
-export interface AnalyzedComment extends StakeholderComment, CommentAnalysis {}
+export interface AnalyzedComment extends StakeholderComment, CommentAnalysis {
+    isOptimistic?: boolean;
+}
