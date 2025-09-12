@@ -5,7 +5,6 @@ import type { AnalyzedComment } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from './icons';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from './ui/skeleton';
 
 interface CommentCardProps {
@@ -52,32 +51,7 @@ export default function CommentCard({ comment }: CommentCardProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="summary" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="summary">
-                <Icons.Summary className="mr-2 h-4 w-4" />
-                AI Summary
-            </TabsTrigger>
-            <TabsTrigger value="original">
-                <Icons.Comment className="mr-2 h-4 w-4" />
-                Original Comment
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="summary" className="mt-4 rounded-lg border bg-secondary/30 p-4">
-            {isOptimistic ? (
-                <div className="space-y-2 mt-1">
-                    <Skeleton className="h-4 w-[250px]" />
-                    <Skeleton className="h-4 w-[200px]" />
-                </div>
-            ) : (
-                <p className="text-sm text-muted-foreground">{comment.summary}</p>
-            )}
-          </TabsContent>
-          <TabsContent value="original" className="mt-4">
-             <p className="text-sm text-muted-foreground whitespace-pre-wrap">{comment.comment}</p>
-          </TabsContent>
-        </Tabs>
-
+        <p className="text-sm text-muted-foreground whitespace-pre-wrap">{comment.comment}</p>
       </CardContent>
       <CardFooter>
         <div className="flex w-full flex-wrap items-center gap-2">
