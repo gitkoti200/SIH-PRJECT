@@ -36,7 +36,7 @@ export default function CommentCard({ comment }: CommentCardProps) {
 
   return (
     <Card className={`transition-shadow duration-300 hover:shadow-lg ${isOptimistic ? 'opacity-60 animate-pulse' : ''}`}>
-      <CardHeader>
+      <CardHeader className="p-4">
         <div className="flex items-start justify-between">
             <div>
                  <CardTitle className="text-base font-medium">{comment.author}</CardTitle>
@@ -50,10 +50,10 @@ export default function CommentCard({ comment }: CommentCardProps) {
             </Badge>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 pt-0">
         <p className="text-sm text-muted-foreground whitespace-pre-wrap">{comment.comment}</p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="p-4 pt-0">
         <div className="flex w-full flex-wrap items-center gap-2">
             <span className="text-sm font-medium">Keywords:</span>
             {isOptimistic ? (
