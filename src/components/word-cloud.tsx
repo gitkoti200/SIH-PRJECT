@@ -66,7 +66,7 @@ export default function WordCloud({ comments }: WordCloudProps) {
   };
 
   return (
-    <Card className="lg:col-span-3">
+    <Card className="md:col-span-3">
       <CardHeader>
         <CardTitle className="font-headline">Keyword Cloud</CardTitle>
         <CardDescription>

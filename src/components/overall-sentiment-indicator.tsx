@@ -55,7 +55,7 @@ export default function OverallSentimentIndicator({
   const totalComments = comments.length;
 
   return (
-    <Card className="lg:col-span-2">
+    <Card className="md:col-span-2">
       <CardHeader>
         <CardTitle className="font-headline">Overall Sentiment</CardTitle>
         <CardDescription>Distribution of all {totalComments} received comments.</CardDescription>
