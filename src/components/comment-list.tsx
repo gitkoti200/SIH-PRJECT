@@ -13,7 +13,7 @@ export default function CommentList({ comments }: CommentListProps) {
   return (
     <Card>
         <CardHeader>
-            <CardTitle className="font-headline">Stakeholder Feedback</CardTitle>
+            <CardTitle className="font-headline">Review</CardTitle>
         </CardHeader>
         <CardContent>
             <ScrollArea className="h-[calc(100vh-14rem)] pr-4">
