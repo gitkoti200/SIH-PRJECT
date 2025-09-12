@@ -1,7 +1,7 @@
 'use client';
 
 import type { AnalyzedComment, Sentiment, StakeholderComment } from '@/lib/types';
-import { useState, useMemo, useTransition } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Select,
@@ -16,13 +16,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import OverallSentimentIndicator from './overall-sentiment-indicator';
 import WordCloud from './word-cloud';
 import CommentCard from './comment-card';
-import AddCommentForm from './add-comment-form';
 import { Icons } from './icons';
-import { analyzeCommentSentiment } from '@/ai/flows/analyze-comment-sentiment';
-import { extractRelevantKeywords } from '@/ai/flows/extract-relevant-keywords';
-import { summarizeStakeholderComment } from '@/ai/flows/summarize-stakeholder-comments';
-import { useToast } from '@/hooks/use-toast';
-
 
 type SortOption = 'sentiment_desc' | 'sentiment_asc' | 'date_desc';
 type SentimentFilter = Sentiment | 'all';
@@ -37,60 +31,6 @@ export default function Dashboard({ initialComments }: DashboardProps) {
   const [sentimentFilter, setSentimentFilter] =
     useState<SentimentFilter>('all');
   const [sortOption, setSortOption] = useState<SortOption>('date_desc');
-  const [isAnalyzing, startAnalysisTransition] = useTransition();
-  const { toast } = useToast();
-
-  const handleAddComment = (newComment: Omit<StakeholderComment, 'id' | 'timestamp'>) => {
-    const tempId = `temp-${Date.now()}`;
-    const commentWithTimestamp: StakeholderComment = {
-      ...newComment,
-      id: tempId,
-      timestamp: new Date().toISOString(),
-    };
-
-    // Optimistically add a placeholder card
-    const optimisticComment: AnalyzedComment = {
-      ...commentWithTimestamp,
-      summary: 'Analyzing comment...',
-      sentiment: 'neutral',
-      sentimentScore: 0,
-      keywords: ['Analyzing...'],
-      isOptimistic: true,
-    };
-    
-    setComments(prev => [optimisticComment, ...prev]);
-
-    startAnalysisTransition(async () => {
-      try {
-        const [summary, sentiment, keywords] = await Promise.all([
-            summarizeStakeholderComment({ comment: newComment.comment }),
-            analyzeCommentSentiment({ comment: newComment.comment }),
-            extractRelevantKeywords({ comment: newComment.comment }),
-        ]);
-
-        const analyzedComment: AnalyzedComment = {
-            ...commentWithTimestamp,
-            id: `comment-${Date.now()}`,
-            summary: summary.summary,
-            sentiment: sentiment.sentiment,
-            sentimentScore: sentiment.score,
-            keywords: keywords.keywords,
-        };
-        
-        setComments(prev => [analyzedComment, ...prev.filter(c => c.id !== tempId)]);
-
-      } catch (error) {
-        console.error("Failed to analyze comment:", error);
-        toast({
-            title: 'Analysis Failed',
-            description: 'Could not analyze the new comment. Please try again.',
-            variant: 'destructive',
-        });
-        // Remove the optimistic comment if analysis fails
-        setComments(prev => prev.filter(c => c.id !== tempId));
-      }
-    });
-  };
 
   const filteredAndSortedComments = useMemo(() => {
     let filtered = comments;
@@ -127,8 +67,6 @@ export default function Dashboard({ initialComments }: DashboardProps) {
         <OverallSentimentIndicator comments={comments} />
         <WordCloud comments={comments} />
       </section>
-      
-      <AddCommentForm onSubmit={handleAddComment} isSubmitting={isAnalyzing} />
 
       <Card>
         <CardHeader>
