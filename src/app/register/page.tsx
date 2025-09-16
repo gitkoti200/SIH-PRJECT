@@ -50,7 +50,7 @@ export default function RegisterPage() {
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>
             Enter your details below to register.
-          </d_CardDescription>
+          </CardDescription>
         </CardHeader>
         <form onSubmit={handleRegister}>
           <CardContent className="space-y-4">
