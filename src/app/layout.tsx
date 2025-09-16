@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'eConsult Insight',
+  title: 'Sentiment analysis of reviewed comments',
   description: 'AI-powered analysis of stakeholder feedback.',
 };
 

@@ -9,7 +9,7 @@ export default function Header() {
              <Icons.Logo className="h-6 w-6" />
           </div>
           <h1 className="font-headline text-xl font-semibold tracking-tight text-foreground">
-            eConsult Insight
+            Sentiment analysis of reviewed comments
           </h1>
         </div>
       </div>
