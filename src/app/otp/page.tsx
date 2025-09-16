@@ -23,6 +23,7 @@ export default function OtpPage() {
 
     // Basic OTP validation for demonstration
     if (otp === '123456') {
+      sessionStorage.setItem('isAuthenticated', 'true');
       toast({
         title: 'Success',
         description: 'Your OTP has been verified successfully.',
