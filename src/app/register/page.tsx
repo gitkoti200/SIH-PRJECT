@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
+import { Icons } from '@/components/icons';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -37,13 +38,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex font-sans min-h-screen items-center justify-center bg-background p-4">
+    <div className="flex font-sans min-h-screen flex-col items-center justify-center bg-background p-4 space-y-8">
+      <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
+          <div className="rounded-full bg-primary p-2 text-primary-foreground">
+            <Icons.Logo className="h-7 w-7" />
+          </div>
+          <h1>Sentiment analysis of reviewed comments</h1>
+      </div>
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">Create an account</CardTitle>
           <CardDescription>
             Enter your details below to register.
-          </CardDescription>
+          </d_CardDescription>
         </CardHeader>
         <form onSubmit={handleRegister}>
           <CardContent className="space-y-4">
