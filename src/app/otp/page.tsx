@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,8 +11,20 @@ import { Loader2 } from 'lucide-react';
 export default function OtpPage() {
   const [otp, setOtp] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
   const router = useRouter();
   const { toast } = useToast();
+  
+  useEffect(() => {
+    const storedPhoneNumber = sessionStorage.getItem('phoneNumber');
+    if (storedPhoneNumber) {
+      setPhoneNumber(storedPhoneNumber);
+    } else {
+        // If there's no phone number, we shouldn't be here.
+        router.push('/login');
+    }
+  }, [router]);
+
 
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,7 +58,7 @@ export default function OtpPage() {
         <CardHeader>
           <CardTitle className="text-2xl">OTP Verification</CardTitle>
           <CardDescription>
-            Please enter the 6-digit code sent to your device.
+            Please enter the 6-digit code sent to {phoneNumber}.
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleVerify}>

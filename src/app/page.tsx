@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     const authStatus = sessionStorage.getItem('isAuthenticated');
     if (authStatus !== 'true') {
-      router.push('/otp');
+      router.push('/login');
     } else {
       setIsAuthenticated(true);
     }
