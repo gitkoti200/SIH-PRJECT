@@ -8,7 +8,7 @@ export default function Header() {
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
              <Icons.Logo className="h-6 w-6" />
           </div>
-          <h1 className="font-headline text-xl font-semibold tracking-tight text-foreground">
+          <h1 className="text-xl font-semibold tracking-tight text-foreground">
             Sentiment analysis of reviewed comments
           </h1>
         </div>

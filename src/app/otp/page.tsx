@@ -53,7 +53,7 @@ export default function OtpPage() {
   };
 
   return (
-    <div className="flex font-body min-h-screen items-center justify-center bg-background p-4">
+    <div className="flex font-sans min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">OTP Verification</CardTitle>
