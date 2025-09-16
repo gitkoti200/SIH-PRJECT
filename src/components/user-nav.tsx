@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -54,7 +55,7 @@ export default function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push('/')}>
+          <DropdownMenuItem onClick={() => router.push('/profile')}>
             <Icons.User className="mr-2" />
             <span>Profile</span>
           </DropdownMenuItem>
