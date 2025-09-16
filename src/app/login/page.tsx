@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -42,7 +43,7 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSendOtp}>
-          <CardContent>
+          <CardContent className="space-y-4">
             <Input
               id="phone"
               type="tel"
@@ -52,6 +53,12 @@ export default function LoginPage() {
               required
               disabled={isLoading}
             />
+             <div className="text-center text-sm">
+              Don&apos;t have an account?{' '}
+              <Link href="/register" className="underline">
+                Sign up
+              </Link>
+            </div>
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full" disabled={isLoading || !phoneNumber}>

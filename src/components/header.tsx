@@ -1,9 +1,10 @@
 import { Icons } from './icons';
+import UserNav from './user-nav';
 
 export default function Header() {
   return (
     <header className="border-b bg-card">
-      <div className="container mx-auto flex h-16 items-center px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
              <Icons.Logo className="h-6 w-6" />
@@ -12,6 +13,7 @@ export default function Header() {
             Sentiment analysis of reviewed comments
           </h1>
         </div>
+        <UserNav />
       </div>
     </header>
   );

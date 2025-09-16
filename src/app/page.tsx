@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Dashboard from '@/components/dashboard';
 import Header from '@/components/header';
 import { getAnalyzedComments } from '@/lib/data';
-import type { AnalyzedComment } from '@/lib/types';
 import { Loader2 } from 'lucide-react';
 
 export default function Home() {
