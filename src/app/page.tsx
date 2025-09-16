@@ -10,30 +10,35 @@ import { Loader2 } from 'lucide-react';
 
 export default function Home() {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const analyzedComments = getAnalyzedComments();
 
   useEffect(() => {
+    // This check runs only on the client-side
     const authStatus = sessionStorage.getItem('isAuthenticated');
-    if (authStatus !== 'true') {
-      router.push('/login');
-    } else {
+    if (authStatus === 'true') {
       setIsAuthenticated(true);
+    } else {
+      router.push('/login');
     }
-    setLoading(false);
   }, [router]);
 
-  if (loading) {
+  if (isAuthenticated === null) {
+    // While checking for authentication, show a loader
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
   }
-
+  
   if (!isAuthenticated) {
-    return null; // or a minimal loading state while redirecting
+    // This will be shown briefly while the redirect to /login happens
+     return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
   }
 
   return (
