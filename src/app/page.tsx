@@ -19,11 +19,12 @@ export default function Home() {
     if (authStatus === 'true') {
       setIsAuthenticated(true);
     } else {
+      // If not authenticated, redirect to login.
       router.push('/login');
     }
   }, [router]);
 
-  // While checking for authentication, show a loader
+  // While checking for authentication, show a loading spinner.
   if (isAuthenticated === null) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
@@ -32,7 +33,7 @@ export default function Home() {
     );
   }
   
-  // If authenticated, show the dashboard
+  // If authenticated, show the dashboard content.
   if (isAuthenticated) {
     return (
       <div className="min-h-screen bg-background">
@@ -44,7 +45,7 @@ export default function Home() {
     );
   }
 
-  // This will be shown briefly while the redirect to /login happens
+  // This return is for the case where we are redirecting, it will briefly show a loader.
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
