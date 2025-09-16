@@ -23,8 +23,8 @@ export default function Home() {
     }
   }, [router]);
 
+  // While checking for authentication, show a loader
   if (isAuthenticated === null) {
-    // While checking for authentication, show a loader
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
@@ -32,21 +32,22 @@ export default function Home() {
     );
   }
   
-  if (!isAuthenticated) {
-    // This will be shown briefly while the redirect to /login happens
-     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+  // If authenticated, show the dashboard
+  if (isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <main className="container mx-auto p-4 sm:p-6 lg:p-8">
+          <Dashboard initialComments={analyzedComments} />
+        </main>
       </div>
     );
   }
 
+  // This will be shown briefly while the redirect to /login happens
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <main className="container mx-auto p-4 sm:p-6 lg:p-8">
-        <Dashboard initialComments={analyzedComments} />
-      </main>
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <Loader2 className="h-12 w-12 animate-spin text-primary" />
     </div>
   );
 }
