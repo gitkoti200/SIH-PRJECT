@@ -1,4 +1,5 @@
 import { Icons } from './icons';
+import { ThemeToggle } from './theme-toggle';
 import UserNav from './user-nav';
 
 export default function Header() {
@@ -13,7 +14,10 @@ export default function Header() {
             Sentiment analysis of reviewed comments
           </h1>
         </div>
-        <UserNav />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <UserNav />
+        </div>
       </div>
     </header>
   );

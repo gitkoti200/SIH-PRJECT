@@ -1,4 +1,4 @@
-import { Scale, Smile, Frown, Meh, Filter, ArrowUpNarrowWide, ArrowDownWideNarrow, Search, MessageSquare, FileText, Bot, User, LogOut } from 'lucide-react';
+import { Scale, Smile, Frown, Meh, Filter, ArrowUpNarrowWide, ArrowDownWideNarrow, Search, MessageSquare, FileText, Bot, User, LogOut, Sun, Moon } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 
 export const Icons = {
@@ -31,4 +31,6 @@ export const Icons = {
   Bot: Bot,
   User: User,
   LogOut: LogOut,
+  Sun: Sun,
+  Moon: Moon,
 };
