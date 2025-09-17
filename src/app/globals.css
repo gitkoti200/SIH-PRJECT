@@ -69,3 +69,12 @@
     @apply font-headline;
   }
 }
+
+@layer utilities {
+  .text-3d {
+    text-shadow:
+      1px 1px 1px hsl(var(--primary) / 0.2),
+      2px 2px 1px hsl(var(--primary) / 0.2),
+      3px 3px 1px hsl(var(--primary) / 0.2);
+  }
+}
