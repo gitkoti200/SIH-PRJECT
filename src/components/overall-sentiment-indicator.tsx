@@ -7,9 +7,9 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-  ChartConfig,
 } from '@/components/ui/chart';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import type { ChartConfig } from '@/components/ui/chart';
 
 interface OverallSentimentIndicatorProps {
   comments: AnalyzedComment[];
@@ -36,7 +36,7 @@ const chartConfig = {
 export default function OverallSentimentIndicator({
   comments,
 }: OverallSentimentIndicatorProps) {
-  const sentimentCounts = useMemo(() => {
+  const sentimentData = useMemo(() => {
     const counts = {
       positive: 0,
       neutral: 0,
@@ -57,7 +57,7 @@ export default function OverallSentimentIndicator({
   return (
     <Card className="md:col-span-2">
       <CardHeader>
-        <CardTitle className="font-headline">Overall Sentiment</CardTitle>
+        <CardTitle>Overall Sentiment</CardTitle>
         <CardDescription>Distribution of all {totalComments} received comments.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -68,14 +68,15 @@ export default function OverallSentimentIndicator({
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={sentimentCounts}
+              data={sentimentData}
               dataKey="value"
               nameKey="name"
               innerRadius={60}
               strokeWidth={5}
+              labelLine={false}
             >
-              {sentimentCounts.map((entry) => (
-                <Cell key={`cell-${entry.name}`} fill={entry.fill} />
+              {sentimentData.map((entry) => (
+                <Cell key={`cell-${entry.name}`} fill={entry.fill} className="transition-opacity outline-none focus:opacity-100 hover:opacity-90" />
               ))}
             </Pie>
           </PieChart>

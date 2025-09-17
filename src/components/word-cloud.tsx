@@ -26,12 +26,11 @@ interface WordStat {
   avgSentiment: number;
 }
 
-// Function to map sentiment score to a color
 const getSentimentColor = (score: number): string => {
-  if (score > 0.3) return 'text-green-600'; // Positive
-  if (score < -0.3) return 'text-red-600'; // Negative
-  return 'text-gray-600'; // Neutral
-};
+    if (score > 0.3) return 'text-[hsl(var(--chart-2))]';
+    if (score < -0.3) return 'text-[hsl(var(--chart-5))]';
+    return 'text-muted-foreground';
+  };
 
 export default function WordCloud({ comments }: WordCloudProps) {
   const keywordStats = useMemo<WordStat[]>(() => {
@@ -68,7 +67,7 @@ export default function WordCloud({ comments }: WordCloudProps) {
   return (
     <Card className="md:col-span-3">
       <CardHeader>
-        <CardTitle className="font-headline">Keyword Cloud</CardTitle>
+        <CardTitle>Keyword Cloud</CardTitle>
         <CardDescription>
           Frequently used words. Size indicates frequency. Color indicates average sentiment.
         </CardDescription>

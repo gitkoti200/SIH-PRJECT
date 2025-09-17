@@ -30,7 +30,7 @@ export default function OverallSummary({ comments }: OverallSummaryProps) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="font-headline flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2">
                     <Icons.Bot className="h-6 w-6" />
                     AI-Generated Overall Summary
                 </CardTitle>
@@ -48,7 +48,7 @@ export default function OverallSummary({ comments }: OverallSummaryProps) {
                         <Skeleton className="h-4 w-3/5" />
                     </div>
                 ) : (
-                    <div className="prose prose-sm max-w-none text-muted-foreground whitespace-pre-wrap">
+                    <div className="prose prose-sm max-w-none text-foreground/80 dark:text-foreground/70 whitespace-pre-wrap">
                         {summary}
                     </div>
                 )}
