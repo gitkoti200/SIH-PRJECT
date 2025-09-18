@@ -26,9 +26,6 @@ export default function Dashboard({ initialComments }: DashboardProps) {
                     <Icons.Comment className="h-6 w-6" />
                     Comments
                 </CardTitle>
-                <CardDescription>
-                    List of all stakeholder comments.
-                </CardDescription>
             </CardHeader>
             <CardContent>
                 <CommentList comments={comments} />
