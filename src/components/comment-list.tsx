@@ -11,12 +11,12 @@ interface CommentListProps {
 
 export default function CommentList({ comments }: CommentListProps) {
   return (
-    <Card>
+    <Card className="flex-1 flex flex-col">
         <CardHeader>
             <CardTitle>Stakeholder Comments</CardTitle>
         </CardHeader>
-        <CardContent>
-            <ScrollArea className="h-[calc(100vh-14rem)] pr-4">
+        <CardContent className="flex-1 flex flex-col">
+            <ScrollArea className="flex-1 pr-4 -mr-4">
                 <div className="space-y-4">
                 {comments.map((comment) => (
                     <CommentCard key={comment.id} comment={comment} />
