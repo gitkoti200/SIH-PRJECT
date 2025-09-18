@@ -5,7 +5,6 @@ import type { AnalyzedComment } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Icons } from './icons';
-import { Skeleton } from './ui/skeleton';
 
 interface CommentCardProps {
   comment: AnalyzedComment;
@@ -32,10 +31,9 @@ const sentimentStyles = {
 export default function CommentCard({ comment }: CommentCardProps) {
   const styles = sentimentStyles[comment.sentiment];
   const SentimentIcon = styles.icon;
-  const isOptimistic = comment.isOptimistic;
 
   return (
-    <Card className={`transition-shadow duration-300 hover:shadow-lg ${isOptimistic ? 'opacity-60 animate-pulse' : ''}`}>
+    <Card className="transition-shadow duration-300 hover:shadow-lg">
       <CardHeader className="p-4">
         <div className="flex items-start justify-between">
             <div>
@@ -56,15 +54,11 @@ export default function CommentCard({ comment }: CommentCardProps) {
       <CardFooter className="p-4 pt-0">
         <div className="flex w-full flex-wrap items-center gap-2">
             <span className="text-sm font-medium">Keywords:</span>
-            {isOptimistic ? (
-                <Skeleton className="h-5 w-24" />
-            ) : (
-                comment.keywords.map((keyword) => (
-                    <Badge key={keyword} variant="secondary" className="font-normal">
-                    {keyword}
-                    </Badge>
-                ))
-            )}
+            {comment.keywords.map((keyword) => (
+                <Badge key={keyword} variant="secondary" className="font-normal">
+                {keyword}
+                </Badge>
+            ))}
         </div>
       </CardFooter>
     </Card>
