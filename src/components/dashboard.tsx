@@ -22,15 +22,15 @@ export default function Dashboard({ initialComments }: DashboardProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div className="lg:col-span-1 flex flex-col gap-8">
-        <Card className="flex flex-col">
+        <Card className="flex flex-col h-[800px]">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Icons.Comment className="h-6 w-6" />
                     Reviewed Comments
                 </CardTitle>
             </CardHeader>
-            <CardContent className="flex-1 flex flex-col">
-                <ScrollArea className="flex-1 pr-4 -mr-4 h-[700px]">
+            <CardContent className="flex-1 flex flex-col overflow-hidden">
+                <ScrollArea className="flex-1 pr-4 -mr-4">
                     <CommentList comments={comments} />
                 </ScrollArea>
             </CardContent>
