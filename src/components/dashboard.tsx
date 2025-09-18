@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { AnalyzedComment } from '@/lib/types';
@@ -24,7 +25,7 @@ export default function Dashboard({ initialComments }: DashboardProps) {
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                     <Icons.Comment className="h-6 w-6" />
-                    Comments
+                    Reviewed Comments
                 </CardTitle>
             </CardHeader>
             <CardContent>
