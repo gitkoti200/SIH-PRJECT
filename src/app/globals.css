@@ -65,6 +65,14 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
+
+  .bg-3d {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, hsl(var(--background)) 1px);
+    background-size: 20px 20px;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline;
   }
