@@ -1,9 +1,11 @@
 
 'use client';
 
-import { motion, type HTMLMotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
+import type { HTMLMotionProps } from 'framer-motion';
 
 interface AnimatedDivProps extends HTMLMotionProps<'div'> {
+  children: React.ReactNode;
   delay?: number;
 }
 

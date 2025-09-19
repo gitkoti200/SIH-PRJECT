@@ -22,7 +22,7 @@ export default function Dashboard({ initialComments }: DashboardProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      <AnimatedDiv className="lg:col-span-1" delay={0.3}>
+      <AnimatedDiv className="lg:col-span-1">
         <Card className="h-[calc(100vh-12rem)] flex flex-col">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -38,13 +38,13 @@ export default function Dashboard({ initialComments }: DashboardProps) {
         </Card>
       </AnimatedDiv>
       <div className="lg:col-span-2 space-y-8">
-         <AnimatedDiv delay={0}>
+         <AnimatedDiv delay={0.2}>
           <section className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <OverallSentimentIndicator comments={comments} />
               <WordCloud comments={comments} />
           </section>
         </AnimatedDiv>
-        <AnimatedDiv delay={0.1}>
+        <AnimatedDiv delay={0.4}>
           <OverallSummary comments={comments} />
         </AnimatedDiv>
       </div>

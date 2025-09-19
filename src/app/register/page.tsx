@@ -10,7 +10,6 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Icons } from '@/components/icons';
-import AnimatedDiv from '@/components/animated-div';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -40,13 +39,13 @@ export default function RegisterPage() {
 
   return (
     <div className="flex font-sans min-h-screen flex-col items-center justify-center p-4 space-y-8">
-      <AnimatedDiv className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
+      <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
             <Icons.Logo className="h-7 w-7" />
           </div>
           <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
-      </AnimatedDiv>
-      <AnimatedDiv delay={0.2} className="w-full max-w-sm">
+      </div>
+      <div className="w-full max-w-sm">
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl">Create an account</CardTitle>
@@ -101,7 +100,7 @@ export default function RegisterPage() {
             </CardFooter>
           </form>
         </Card>
-      </AnimatedDiv>
+      </div>
     </div>
   );
 }

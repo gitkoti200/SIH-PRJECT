@@ -18,8 +18,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        headline: ['Poppins', 'sans-serif'],
-        logo: ['Poppins', 'sans-serif'],
+        headline: ['var(--font-poppins)', 'sans-serif'],
+        logo: ['var(--font-poppins)', 'sans-serif'],
       },
       colors: {
         background: 'hsl(var(--background))',

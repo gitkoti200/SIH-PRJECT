@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import { Icons } from '@/components/icons';
+import AnimatedDiv from '@/components/animated-div';
 
 export default function OtpPage() {
   const [otp, setOtp] = useState('');
@@ -55,47 +56,51 @@ export default function OtpPage() {
 
   return (
     <div className="flex font-sans min-h-screen flex-col items-center justify-center p-4 space-y-8">
-      <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
-          <div className="rounded-full bg-primary p-2 text-primary-foreground">
-            <Icons.Logo className="h-7 w-7" />
-          </div>
-          <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
-      </div>
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">OTP Verification</CardTitle>
-          <CardDescription>
-            Please enter the 6-digit code sent to {phoneNumber}.
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleVerify}>
-          <CardContent>
-            <Input
-              id="otp"
-              type="text"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              placeholder="123456"
-              maxLength={6}
-              className="text-center text-lg tracking-[0.5em]"
-              required
-              disabled={isLoading}
-            />
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full" disabled={isLoading || otp.length !== 6}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Verifying...
-                </>
-              ) : (
-                'Verify'
-              )}
-            </Button>
-          </CardFooter>
-        </form>
-      </Card>
+      <AnimatedDiv>
+        <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
+            <div className="rounded-full bg-primary p-2 text-primary-foreground">
+              <Icons.Logo className="h-7 w-7" />
+            </div>
+            <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
+        </div>
+      </AnimatedDiv>
+      <AnimatedDiv delay={0.2}>
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle className="text-2xl">OTP Verification</CardTitle>
+            <CardDescription>
+              Please enter the 6-digit code sent to {phoneNumber}.
+            </CardDescription>
+          </CardHeader>
+          <form onSubmit={handleVerify}>
+            <CardContent>
+              <Input
+                id="otp"
+                type="text"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+                placeholder="123456"
+                maxLength={6}
+                className="text-center text-lg tracking-[0.5em]"
+                required
+                disabled={isLoading}
+              />
+            </CardContent>
+            <CardFooter>
+              <Button type="submit" className="w-full" disabled={isLoading || otp.length !== 6}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Verifying...
+                  </>
+                ) : (
+                  'Verify'
+                )}
+              </Button>
+            </CardFooter>
+          </form>
+        </Card>
+      </AnimatedDiv>
     </div>
   );
 }
