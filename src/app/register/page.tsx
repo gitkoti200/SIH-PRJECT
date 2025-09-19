@@ -10,6 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Icons } from '@/components/icons';
+import TypingAnimation from '@/components/typing-animation';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -43,7 +44,7 @@ export default function RegisterPage() {
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
             <Icons.Logo className="h-7 w-7" />
           </div>
-          <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
+          <TypingAnimation text="Sentiment analysis of reviewed comments" />
       </div>
       <div className="w-full max-w-sm">
         <Card>

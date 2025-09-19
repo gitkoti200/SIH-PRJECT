@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Poppins, Lobster } from 'next/font/google';
 import './globals.css';
 import './page-transition.css';
+import './typing-animation.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import PageTransition from '@/components/page-transition';

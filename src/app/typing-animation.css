@@ -1,0 +1,37 @@
+.typing-container {
+  display: inline-block;
+}
+
+.typing-text {
+  overflow: hidden; /* Ensures the text is not visible until the animation plays */
+  border-right: 0.15em solid hsl(var(--primary)); /* The typewriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0;
+  letter-spacing: 0.05em; /* Adjust as needed */
+  width: 0;
+  animation:
+    typing 2.5s steps(var(--character-count, 40)) forwards,
+    blink-caret 0.75s step-end infinite;
+  animation-delay: 0.5s;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(var(--primary));
+  }
+}
