@@ -26,7 +26,7 @@ export default function Home() {
   // While checking for authentication, show a loading spinner.
   if (isAuthenticated === null) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-background">
+      <div className="flex min-h-screen items-center justify-center">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
       </div>
     );
@@ -35,7 +35,7 @@ export default function Home() {
   // If authenticated, show the dashboard content.
   if (isAuthenticated) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen">
         <Header />
         <main className="container mx-auto p-4 sm:p-6 lg:p-8">
           <Dashboard initialComments={analyzedComments} />
@@ -46,7 +46,7 @@ export default function Home() {
 
   // This return is for the case where we are redirecting, it will briefly show a loader.
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
+    <div className="flex min-h-screen items-center justify-center">
       <Loader2 className="h-12 w-12 animate-spin text-primary" />
     </div>
   );

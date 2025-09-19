@@ -54,7 +54,7 @@ export default function OtpPage() {
   };
 
   return (
-    <div className="flex font-sans min-h-screen flex-col items-center justify-center bg-background p-4 space-y-8">
+    <div className="flex font-sans min-h-screen flex-col items-center justify-center p-4 space-y-8">
       <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
             <Icons.Logo className="h-7 w-7" />
