@@ -11,7 +11,6 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import AnimatedDiv from '@/components/animated-div';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -67,7 +66,7 @@ export default function ProfilePage() {
     <div className="min-h-screen">
       <Header />
       <main className="container mx-auto p-4 sm:p-6 lg:p-8 flex justify-center">
-        <AnimatedDiv className="w-full max-w-2xl">
+        <div className="w-full max-w-2xl">
           <Card>
             <CardHeader>
               <div className="flex items-center gap-4">
@@ -119,7 +118,7 @@ export default function ProfilePage() {
               </form>
             </CardContent>
           </Card>
-        </AnimatedDiv>
+        </div>
       </main>
     </div>
   );

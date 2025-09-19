@@ -10,7 +10,6 @@ import CommentList from './comment-list';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Icons } from './icons';
 import { ScrollArea } from './ui/scroll-area';
-import AnimatedDiv from './animated-div';
 
 
 interface DashboardProps {
@@ -22,7 +21,7 @@ export default function Dashboard({ initialComments }: DashboardProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      <AnimatedDiv className="lg:col-span-1">
+      <div className="lg:col-span-1">
         <Card className="h-[calc(100vh-12rem)] flex flex-col">
             <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -36,17 +35,17 @@ export default function Dashboard({ initialComments }: DashboardProps) {
                 </ScrollArea>
             </CardContent>
         </Card>
-      </AnimatedDiv>
+      </div>
       <div className="lg:col-span-2 space-y-8">
-         <AnimatedDiv delay={0.2}>
+         <div>
           <section className="grid grid-cols-1 md:grid-cols-5 gap-6">
               <OverallSentimentIndicator comments={comments} />
               <WordCloud comments={comments} />
           </section>
-        </AnimatedDiv>
-        <AnimatedDiv delay={0.4}>
+        </div>
+        <div>
           <OverallSummary comments={comments} />
-        </AnimatedDiv>
+        </div>
       </div>
     </div>
   );
