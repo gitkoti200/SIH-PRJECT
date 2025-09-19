@@ -26,22 +26,14 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     
     // IN animation
     const inTimer = setTimeout(() => {
-      
-      // Random loading time after the overlay rolls in
-      const randomDelay = Math.random() * 400 + 400;
-      const loadingTimer = setTimeout(() => {
-        setAnimationClass('overlay__scene--out');
-        previousPathname.current = pathname;
-      }, randomDelay);
-      
-      return () => clearTimeout(loadingTimer);
-
+      setAnimationClass('overlay__scene--out');
+      previousPathname.current = pathname;
     }, ANIMATION_TIME);
     
     // OUT animation
     const outTimer = setTimeout(() => {
         setIsAnimating(false);
-    }, ANIMATION_TIME * 2 + 800)
+    }, ANIMATION_TIME * 2)
 
 
     return () => {
