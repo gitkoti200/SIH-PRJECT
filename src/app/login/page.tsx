@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Icons } from '@/components/icons';
+import AnimatedDiv from '@/components/animated-div';
 
 export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -36,51 +37,53 @@ export default function LoginPage() {
 
   return (
     <div className="flex font-sans min-h-screen flex-col items-center justify-center p-4 space-y-8">
-      <div className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
+      <AnimatedDiv className="flex items-center gap-3 text-2xl font-semibold tracking-tight text-foreground">
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
             <Icons.Logo className="h-7 w-7" />
           </div>
           <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
-      </div>
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Please enter your phone number to receive an OTP.
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleSendOtp}>
-          <CardContent className="space-y-4">
-            <Input
-              id="phone"
-              type="tel"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="Enter your phone number"
-              required
-              disabled={isLoading}
-            />
-             <div className="text-center text-sm">
-              Don&apos;t have an account?{' '}
-              <Link href="/register" className="underline">
-                Sign up
-              </Link>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" className="w-full" disabled={isLoading || !phoneNumber}>
-              {isLoading ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Sending OTP...
-                </>
-              ) : (
-                'Send OTP'
-              )}
-            </Button>
-          </CardFooter>
-        </form>
-      </Card>
+      </AnimatedDiv>
+      <AnimatedDiv delay={0.2} className="w-full max-w-sm">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardDescription>
+              Please enter your phone number to receive an OTP.
+            </CardDescription>
+          </CardHeader>
+          <form onSubmit={handleSendOtp}>
+            <CardContent className="space-y-4">
+              <Input
+                id="phone"
+                type="tel"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Enter your phone number"
+                required
+                disabled={isLoading}
+              />
+              <div className="text-center text-sm">
+                Don&apos;t have an account?{' '}
+                <Link href="/register" className="underline">
+                  Sign up
+                </Link>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button type="submit" className="w-full" disabled={isLoading || !phoneNumber}>
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending OTP...
+                  </>
+                ) : (
+                  'Send OTP'
+                )}
+              </Button>
+            </CardFooter>
+          </form>
+        </Card>
+      </AnimatedDiv>
     </div>
   );
 }
