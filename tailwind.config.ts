@@ -18,7 +18,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        headline: ['Poppins', 'sans-serif'],
+        headline: ['Dancing Script', 'cursive'],
         logo: ['Dancing Script', 'cursive'],
       },
       colors: {
