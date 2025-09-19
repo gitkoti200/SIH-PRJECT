@@ -24,16 +24,18 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     const newLabel = pathname.substring(1) || 'Home';
     setLabel(newLabel.charAt(0).toUpperCase() + newLabel.slice(1));
     
+    const randomDelay = Math.random() * 400 + 400;
+
     // IN animation
     const inTimer = setTimeout(() => {
       setAnimationClass('overlay__scene--out');
       previousPathname.current = pathname;
-    }, ANIMATION_TIME);
+    }, ANIMATION_TIME + randomDelay);
     
     // OUT animation
     const outTimer = setTimeout(() => {
         setIsAnimating(false);
-    }, ANIMATION_TIME * 2)
+    }, ANIMATION_TIME * 2 + randomDelay)
 
 
     return () => {
