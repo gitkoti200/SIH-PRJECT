@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import Header from '@/components/header';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Loader2 } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
+import Loader from '@/components/loader';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -56,8 +57,8 @@ export default function ProfilePage() {
 
   if (isAuthenticated === null) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      <div className="flex min-h-screen items-center justify-center bg-gray-800">
+        <Loader />
       </div>
     );
   }
