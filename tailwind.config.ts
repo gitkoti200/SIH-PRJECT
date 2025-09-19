@@ -19,7 +19,7 @@ export default {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
         headline: ['Poppins', 'sans-serif'],
-        logo: ['Poppins', 'sans-serif'],
+        logo: ['Lobster', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',

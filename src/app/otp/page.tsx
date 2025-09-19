@@ -59,7 +59,7 @@ export default function OtpPage() {
           <div className="rounded-full bg-primary p-2 text-primary-foreground">
             <Icons.Logo className="h-7 w-7" />
           </div>
-          <h1 className="text-3d font-logo">Sentiment analysis of reviewed comments</h1>
+          <h1 className="text-3d font-logo text-4xl">Sentiment analysis of reviewed comments</h1>
       </div>
       <Card className="w-full max-w-sm">
         <CardHeader>
