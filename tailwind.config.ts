@@ -18,8 +18,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        headline: ['Dancing Script', 'cursive'],
-        logo: ['Dancing Script', 'cursive'],
+        headline: ['"STIX Two Text"', 'serif'],
+        logo: ['"STIX Two Text"', 'serif'],
       },
       colors: {
         background: 'hsl(var(--background))',
