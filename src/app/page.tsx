@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Dashboard from '@/components/dashboard';
 import Header from '@/components/header';
 import { getAnalyzedComments } from '@/lib/data';
-import Loader from '@/components/loader';
 
 export default function Home() {
   const router = useRouter();
@@ -26,8 +25,8 @@ export default function Home() {
   // While checking for authentication, show a loading spinner.
   if (isAuthenticated === null) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-800">
-        <Loader />
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-16 w-16 animate-spin rounded-full border-4 border-dashed border-primary"></div>
       </div>
     );
   }
@@ -46,8 +45,8 @@ export default function Home() {
 
   // This return is for the case where we are redirecting, it will briefly show a loader.
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-800">
-      <Loader />
+    <div className="flex min-h-screen items-center justify-center">
+       <div className="h-16 w-16 animate-spin rounded-full border-4 border-dashed border-primary"></div>
     </div>
   );
 }

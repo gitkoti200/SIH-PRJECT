@@ -1,0 +1,137 @@
+/* 
+  SCSS variables converted to CSS variables or static values.
+  $overlaySkewDeg: 20deg;
+  $overlaySkewTangent: 0.36397; 
+  $overlaySkewWidthModifier:  2 * $overlaySkewTangent * 100; (approx 72.8)
+  $labelSkewDeg: -10deg;
+  $transitionTime: 400ms;
+  $bgGradientStartColor: hsl(0, 80%, 38%);
+  $bgGradientEndColor: hsl(55, 80%, 60%);
+*/
+
+.overlay {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1000px;
+}
+
+.overlay__scene {
+  position: absolute;
+  width: calc(100vw + 72.8vh);
+  height: 100%;
+  top: 0;
+  left: -36.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15vmin;
+  perspective: 500px;
+  background: linear-gradient(-20deg, hsl(0, 80%, 38%), hsl(55, 80%, 60%));
+  transform: skew(20deg) translateX(calc(100% + 72.8vh));
+  overflow: hidden;
+}
+
+.overlay__scene--in {
+  animation: overlayIn 400ms ease-in-out 1 both;
+}
+.overlay__scene--in .overlay__label {
+  animation: labelIn 2s ease-in-out 1 forwards;
+}
+
+.overlay__scene--out {
+  animation: overlayOut 400ms ease-in-out 1 both;
+}
+.overlay__scene--out .overlay__label {
+  animation: none;
+}
+
+@keyframes labelIn {
+  from {
+    transform: skewY(-10deg) translateY(-50%) rotatey(10deg);
+  }
+  to {
+    transform: skewY(-10deg) translateY(-50%) rotatey(-10deg);
+  }
+}
+
+@keyframes overlayIn {
+  from {
+    transform: skew(20deg) translate3d(calc(100% + 72.8vh), 0, 0);
+  }
+  to {
+    transform: skew(20deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes overlayOut {
+  from {
+    transform: skew(20deg) translate3d(0, 0, 0);
+  }
+  to {
+    transform: skew(20deg) translate3d(-100%, 0, 0);
+  }
+}
+
+.overlay__label {
+  position: absolute;
+  width: 200%;
+  height: 25vmin;
+  line-height: 1;
+  top: 50vh;
+  left: -50%;
+  background: hsla(0, 80%, 74%, 1);
+  color: #810e0e;
+  mix-blend-mode: multiply;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: skewY(-10deg) translateY(-50%);
+}
+
+.overlay__label-content {
+  transform: skew(-20deg);
+}
+
+.overlay__ribbon {
+  animation: ribbon 750ms infinite linear both;
+  width: 200px;
+  height: 10px;
+  background: #ff5656;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+}
+
+@keyframes ribbon {
+  from {
+    transform: translatez(-100px) rotatey(5deg) skew(-20deg) translateX(-100%);
+  }
+  to {
+    transform: translatez(-100px) rotatey(5deg) skew(-20deg) translateX(calc(100vw + 72.8vh));
+  }
+}
+
+/* Manually generated ribbon styles */
+.ribbon--1 { background-color: #d13c3c; top: 15vh; animation-delay: 300ms; width: 400px; }
+.ribbon--2 { background-color: #e6a54b; top: 85vh; animation-delay: 1200ms; width: 250px; }
+.ribbon--3 { background-color: #da5e40; top: 40vh; animation-delay: 800ms; width: 500px; }
+.ribbon--4 { background-color: #c9323c; top: 60vh; animation-delay: 1500ms; width: 300px; }
+.ribbon--5 { background-color: #e08b46; top: 5vh; animation-delay: 100ms; width: 450px; }
+.ribbon--6 { background-color: #d5503e; top: 95vh; animation-delay: 1800ms; width: 200px; }
+.ribbon--7 { background-color: #e8b34d; top: 25vh; animation-delay: 500ms; width: 600px; }
+.ribbon--8 { background-color: #c42e3b; top: 70vh; animation-delay: 900ms; width: 350px; }
+.ribbon--9 { background-color: #dd7c43; top: 50vh; animation-delay: 200ms; width: 420px; }
+.ribbon--10 { background-color: #d86c40; top: 30vh; animation-delay: 1100ms; width: 280px; }
+.ribbon--11 { background-color: #ebc04f; top: 80vh; animation-delay: 700ms; width: 550px; }
+.ribbon--12 { background-color: #c7363b; top: 10vh; animation-delay: 1600ms; width: 320px; }
+.ribbon--13 { background-color: #de9949; top: 65vh; animation-delay: 400ms; width: 480px; }
+.ribbon--14 { background-color: #d2443d; top: 20vh; animation-delay: 1300ms; width: 380px; }
+.ribbon--15 { background-color: #edc951; top: 90vh; animation-delay: 1000ms; width: 520px; }
+.ribbon--16 { background-color: #c22a3a; top: 45vh; animation-delay: 1900ms; width: 220px; }
